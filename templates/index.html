@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Поиск задач</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <body>
+  <form action="/search" method="POST" class="search-form">
+    <input type="text" name="query" placeholder="Введите тему или категорию...">
+    <button type="submit">Найти</button>
+  </form>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+<div class="job-list">
+  {% for job in jobs %}
+    <div class="job-card">
+      <h2>{{ job.title }}</h2>
+      <p><strong>Бюджет:</strong> {{ job.budget }}</p>
+      <p><strong>Дата публикации:</strong> {{ job.date }}</p>
+      <p><strong>Тип:</strong> {{ job.type }} | <strong>Категория:</strong> {{ job.category }}</p>
+      <p><strong>Клиент:</strong> {{ job.location }}, с {{ job.client_since }}</p>
+      <p><strong>Навыки:</strong> {{ job.skills | join(', ') }}</p>
+      <p>{{ job.description[:300] }}{% if job.description|length > 300 %}...{% endif %}</p>
+      <a href="{{ job.link }}" target="_blank" class="job-link">Перейти к задаче</a>
+    </div>
+  {% else %}
+    <p>Нет доступных задач.</p>
+  {% endfor %}
+</div>
+
+</body>
+</html>

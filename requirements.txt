@@ -1,0 +1,8 @@
+Flask
+Flask-Login
+Flask-SocketIO
+python-dotenv
+openai
+requests
+eventlet
+apscheduler

@@ -46,3 +46,11 @@ button {
 button:hover {
   background-color: #434bd9;
 }
+.flash.error {
+  background-color: #ffdddd;
+  color: #900;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #f00;
+  border-radius: 4px;
+}
