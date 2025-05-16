@@ -1,0 +1,219 @@
+[
+  {
+    "title": "Project Details",
+    "budget": "₹1,500.00 – 12,500.00 INR",
+    "description": "I'm looking for a skilled full stack web developer to create an e-commerce website using custom HTML, CSS, and JavaScript. \n\nKey Requirements:\n- User Account Management: Enable users to create, manage, and customize their accounts.\n- Chatbot Integration: Implement an AI-driven chatbot for customer support and interaction.\n- Data Analytics Prediction Model: Develop a model to analyze user behavior and predict trends.\n\nIdeal Skills & Experience:\n- Strong expertise in HTML, CSS, and JS.\n-strong command on frontend and backend \n- Experience in building robust e-commerce platforms.\n- Proficiency in AI and data analytics.\n- Previous work on user account management systems.",
+    "skills": [
+      "JavaScript",
+      "Python",
+      "Website Design",
+      "MySQL",
+      "WEBDEV"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39416273",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/javascript/Full-Stack-Dev-for-commerce-39416273",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "$250.00 – 750.00 CAD",
+    "description": "Overview: We need a fast, responsive website where users can search for any “Top X” list (e.g. best restaurants, best AI tools, top marketing platforms, etc.). The system should automatically generate accurate results, but all results must also be editable by admins via a panel.  Frontend Requirements: Homepage with a search bar (e.g. “Best AI tools”) When users search, display a Top X list (X = adjustable number) Each result should include: Rank Name Short description Image/logo Link (optional) Fully responsive (mobile + desktop) SEO optimized Fast load time  Backend / Admin Panel: Admin login system Add/edit topics (e.g., “Top 10 Productivity Tools”) Add/edit items under each topic Set number of items shown (Top 3, 5, 10, etc.) Ability to toggle between: Auto mode (auto-generated results via API or scraping) Manual mode (admin-defined results)  Tech Preference: Platform: WordPress (preferred) Should include a custom admin panel or use plugins (ACF, Custom Post Types) Compatible with Elementor or similar page builder (if needed) project budget: 400 CAD MAX figma link: https://www.figma.com/design/9WqAkRMqxhGag6QPgHTc9d/Easy.best?node-id=0-1&t=DJYcTCEcuQaHK4XA-1",
+    "skills": [
+      "PHP",
+      "Website Design",
+      "WordPress",
+      "CSS",
+      "HTML"
+    ],
+    "location": "Canada",
+    "rating": "0.0",
+    "projectId": "39415822",
+    "verifications": [
+      "Rating: 5.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/php/Website-for-top",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "€12.00 – 18.00 EUR per hour",
+    "description": "We are building an application in which we fully integrate Open AI. For this project my team of programmers is looking for a highly skilled and very well experienced project manager who has tons of experience in managing Open AI projects.. Your job is to manage the project, supervise the team of programmers and designers and make Q & A and testing. Final testing will be done by the company owner to who the projects manager directly reports to.",
+    "skills": [
+      "Project Management",
+      "OpenAI",
+      "ChatGPT"
+    ],
+    "location": "Netherlands",
+    "rating": "0.0",
+    "projectId": "39415850",
+    "verifications": [
+      "Rating: 5.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/chatgpt/Open-Application-building",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹37,500.00 – 75,000.00 INR",
+    "description": "Suvpriya Nexus Private Limited is looking for an experienced full-stack developer or team to build a powerful, AI-enabled ERP + CRM platform and a corporate website.\n\nThis is a board-approved project with a total budget of INR 1,00,000 (inclusive of GST).\nWe require strict adherence to the approved blueprint and milestone delivery.\n\nScope Includes:\n\nERP Modules:\n\nFinance & Accounting\n\nInventory & Procurement\n\nHRM (basic)\n\nProject Management\n\nCompliance Tracking\n\nAI Analytics (basic KPIs & forecasting)\n\n\nCRM Modules:\n\nLead & Contact Management\n\nSales Pipeline Tracking\n\nPredictive Lead Scoring\n\nEmail/Chat Integration\n\nMarketing Campaigns\n\nSupport Ticket System\n\n\nCompany Website:\n\nHome, About, Services, CSR, Contact, AI Products\n\nMobile responsive, SEO-ready, CMS-backed\n\n\nTechnical Stack (Required):\n\nFrontend: React.js\n\nBackend: Django + FastAPI\n\nDatabase: PostgreSQL + Redis\n\nAI/ML: Python (TensorFlow, Scikit-learn)\n\nAuthentication: JWT + OAuth2\n\nHosting: AWS (EC2, RDS, S3)\n\n\nProject Timeline: 4 Phases (120 days total)\n\nERP Core (45 days)\n\nCRM Integration (30 days)\n\nWebsite (30 days)\n\nTesting & Deployment (15 days)\n\n\nMilestones will be strictly monitored with source code reviews and demos.\n\nDeliverables:\n\nFull source code (GitHub)\n\nDeployment on AWS\n\nDocumentation & basic user manual\n\nSupport during testing phase\n\n\nRequired Experience:\n\nProven expertise with Django and React\n\nPrior work with ERP/CRM platforms\n\nFamiliarity with AI tools and cloud deployment",
+    "skills": [
+      "PHP",
+      "Python",
+      "Website Design",
+      "Software Architecture",
+      "Amazon Web Services"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39415829",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/python/Develop-Based-ERP-CRM-Platform",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹600.00 – 1,500.00 INR",
+    "description": "Project Overview:\nI’m looking for an experienced full-stack developer to build a simple yet powerful AI-powered blog/article generation tool with an admin dashboard. The goal is to allow users to input a topic and get well-structured blog content generated using GPT (OpenAI API), which they can save, edit, and export.\n\nKey Features:\n Frontend (User-Facing)\nSimple, clean UI with form input for article topic/keywords\n\nOutput section to show AI-generated article\n\nOption to edit and export article (PDF/Word)\n\nResponsive design (mobile + desktop)\n\n  Backend (Admin Dashboard)\nAdmin login & authentication\n\nManage user history (view, delete articles)\n\nAPI usage tracking\n\nUser management & usage quota settings\n\n  AI Integration\nUse OpenAI API to generate high-quality blog articles\n\nAdjustable tone and length (short, medium, long)\n\nDeliverables:\nFully functional web app\n\nSource code + deployment instructions\n\nDocumentation on how to use and manage the app\n\nIdeal Freelancer:\nStrong experience with Python (Flask/Django) & React or Vue\n\nFamiliar with OpenAI or GPT API integration\n\nSkilled in building secure and scalable web apps\n\nGood communication and ability to deliver clean, tested code",
+    "skills": [
+      "PHP",
+      "JavaScript",
+      "Python",
+      "Django",
+      "HTML"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39408404",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/python/Powered-Blog-Generation-Tool-Development",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹1,500.00 – 12,500.00 INR",
+    "description": "We are on the lookout for a skilled and innovative freelancer to collaborate on the creation and monetization of an exciting AI-powered YouTube or Cartoon channel. This project aims to leverage artificial intelligence to produce engaging and entertaining content, appealing to a wide audience.\n\nKey Responsibilities:\n\nContent Creation: Utilize AI technologies to generate captivating and original content for the YouTube or Cartoon channel. This may involve creating animated videos, developing unique characters, or employing AI algorithms to enhance storytelling.\n\nChannel Design and Branding: Design an appealing visual identity for the channel, ensuring it aligns with the target audience and theme. This includes creating a recognizable logo, channel art, and maintaining a cohesive brand throughout the content.\n\nMonetization Strategies: Develop effective strategies to monetize the channel, considering options such as ad revenue, sponsorships, merchandise, and other potential income streams. Implement and optimize monetization methods to maximize revenue.\n\nAudience Engagement: Implement techniques to build and engage a loyal audience. This includes fostering community interaction, responding to comments, and developing a social media presence to promote the channel.\n\nSEO Optimization: Utilize SEO best practices to optimize video titles, descriptions, and tags for improved discoverability on YouTube and other platforms.\n\nQualifications:\n\nProven experience in content creation, particularly in the realm of YouTube or animation.\nProficiency in AI technologies, with the ability to integrate AI into content creation processes.\nUnderstanding of YouTube's monetization policies and experience implementing successful monetization strategies.\nStrong design skills for creating visually appealing channel art and branding elements.\nExcellent communication skills and a creative mindset.\n\nWho to Apply:\nIf you are a talented freelancer with a passion for AI-driven content creation and channel monetization, we want to hear from you! Please submit your portfolio, a brief overview of your relevant experience, and a proposal outlining your approach to creating and monetizing the channel\n\nI will share you channel link kindly check the videos and upload some more videos and make it monitize",
+    "skills": [
+      "Website Design",
+      "Graphic Design",
+      "WordPress",
+      "Google Adsense",
+      "HTML"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39415093",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/website-design/Driven-YouTube-Channel-Development",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "€8.00 – 30.00 EUR",
+    "description": "I'm looking for an experienced web developer to create a professional and engaging web page for my artificial intelligence software solutions. The primary goal of this page is to showcase our innovative products and services.\n\nKey Requirements:\n- User-friendly interface\n- High-quality visuals and graphics\n- SEO optimization\n- Mobile responsiveness\n- Detailed product/service descriptions\n\nIdeal Skills and Experience:\n- Proficiency in web development (HTML, CSS, JavaScript)\n- Experience with SEO and mobile optimization\n- Strong graphic design skills\n- Familiarity with AI industry trends\n- Portfolio of similar projects\n\nPlease provide samples of previous work and a brief outline of your approach. Looking forward to your bids!",
+    "skills": [
+      "Website Design",
+      "Graphic Design",
+      "CSS",
+      "User Interface / IA",
+      "HTML"
+    ],
+    "location": "Spain",
+    "rating": "0.0",
+    "projectId": "39414830",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/website-design/Solutions-Showcase-Website",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "$250.00 – 750.00 USD",
+    "description": "I need to migrate my website from WordPress to Zoho Sites. \n\nRequirements:\n- Retain the existing structure, theme, and all content.\n- Maintain theme, structure, colors, and logo\n- Ultilize zoho One ecosystem: Embed Zoho Forms; Integrate Zoho CRM; AI-chatbot from Zoho SalesIQ\n\nIdeal Skills and Experience:\n- Experience with both WordPress and Zoho Sites\n- Strong understanding of website migration\n- Attention to detail to preserve existing design and functionality\n\nPlease connect for website URL and analysis.",
+    "skills": [
+      "PHP",
+      "Website Design",
+      "WordPress",
+      "MySQL",
+      "HTML"
+    ],
+    "location": "Vietnam",
+    "rating": "0.0",
+    "projectId": "39414556",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/php/Migrate-WordPress-Zoho-Site",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "$80.00 – 150.00 USD",
+    "description": "I made an application using Lovable. It have a form builder and a page to create the integration with AI. It have many problems: it don't save inside the database some form; it don't comunicate from website and admin (for example the editor of web page don't comunicate with web page); the form buider have many problems It is necessary make some changes to adapt to concept of jot form and surveyjs); the page to create the integration aren't perfect and it is necessary solve some problem and test to verify if work; It is necessary verify the registration, login and checkou; it is necessary make better the design. If you want verify the status of app I have the code that I can send. The database is inside Supabase. It is necessary competence in Ai integration and Form builder. The project use: •\tReact con TypeScript\n•\tTailwind CSS per lo styling\n•\tSupabase per database e autenticazione\n•\tShadcn UI per componenti\nMy max budget is 150$. answer me if can do the competence to do and if is ok the budget. And send me similar job made",
+    "skills": [
+      "PHP",
+      "React.js",
+      "Typescript",
+      "ChatGPT"
+    ],
+    "location": "Italy",
+    "rating": "0.0",
+    "projectId": "39414526",
+    "verifications": [
+      "Rating: 5.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/php/Finish-web-application-made-using-39414526",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹100.00 – 400.00 INR per hour",
+    "description": "I need a Python program that implements an adversarial training framework to fine-tune GPT-3 for generating misinformation that evades AI text detectors.\n\nKey Components:\n- Generator Model: Uses prompts to create fake news.\n- Detector Model: Classifies text as AI-generated or human-written.\n\nTraining Process:\n- The generator uses PPO to minimize the detector's confidence in its classification.\n- The detector is periodically retrained on increasingly deceptive texts to enhance its robustness.\n\nRequirements:\n- Proficiency in Python and machine learning\n- Experience with reinforcement learning, particularly PPO\n- Familiarity with language models, especially GPT-3\n- Knowledge of adversarial training techniques\n\nThe final output should include:\n- A robust AI misinformation generator\n- A resilient detector trained on adversarial examples\n\nPlease provide tools and datasets for evaluating and improving detection systems.",
+    "skills": [
+      "Java",
+      "Python",
+      "Software Architecture",
+      "CUDA",
+      "Machine Learning (ML)"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39414463",
+    "verifications": [
+      "Rating: 5.0 out of 5",
+      "FLFrank is offline.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/python/Adversarial-Misinformation-Generation",
+    "client": {}
+  }
+]

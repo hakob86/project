@@ -1,0 +1,17 @@
+2025/05/16-19:16:42.387 54c0 Reusing MANIFEST C:\Users\Mane\Desktop\Python\project-main\chrome_profile\Default\IndexedDB\https_www.freelancer.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/05/16-19:16:42.387 54c0 Recovering log #4
+2025/05/16-19:16:42.387 54c0 Reusing old log C:\Users\Mane\Desktop\Python\project-main\chrome_profile\Default\IndexedDB\https_www.freelancer.com_0.indexeddb.leveldb/000004.log 
+2025/05/16-19:16:42.407 de8 Level-0 table #8: started
+2025/05/16-19:16:42.428 de8 Level-0 table #8: 2016 bytes OK
+2025/05/16-19:16:42.439 de8 Delete type=0 #4
+2025/05/16-19:16:42.458 3b24 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/05/16-19:16:42.623 2c74 Level-0 table #10: started
+2025/05/16-19:16:42.645 2c74 Level-0 table #10: 653 bytes OK
+2025/05/16-19:16:42.647 2c74 Delete type=0 #7
+2025/05/16-19:16:42.647 de8 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\x05' @ 120 : 1
+2025/05/16-19:16:42.647 de8 Compacting 1@0 + 1@1 files
+2025/05/16-19:16:42.661 de8 Generated table #11@0: 45 keys, 1255 bytes
+2025/05/16-19:16:42.661 de8 Compacted 1@0 + 1@1 files => 1255 bytes
+2025/05/16-19:16:42.662 de8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/05/16-19:16:42.662 de8 Delete type=2 #10
+2025/05/16-19:16:42.663 de8 Manual compaction at level-0 from '\x00\x06\x00\x00\x05' @ 120 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)

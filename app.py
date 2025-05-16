@@ -2,7 +2,7 @@ import os
 import json
 import subprocess
 from threading import Thread
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from flask_migrate import Migrate
 from users import db
 from users.models import AutoParseConfig, Job
@@ -145,6 +145,22 @@ def index():
     jobs = Job.query.order_by(Job.id.desc()).limit(20).all()
     return render_template('index.html', jobs=jobs)
 
+import threading
+import subprocess
+import os
+import json
+from flask import jsonify, render_template, request, flash, redirect, url_for
+
+def run_parser(cmd, result_file, errors):
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=1000)
+        if result.stderr:
+            errors.append(f"STDERR {cmd[1]}: {result.stderr}")
+        if result.stdout:
+            print(f"STDOUT {cmd[1]}: {result.stdout}")
+    except Exception as e:
+        errors.append(f"Ошибка запуска {cmd[1]}: {e}")
+
 @app.route('/search', methods=['POST'])
 def search():
     query = request.form.get("query", "").strip()
@@ -152,46 +168,56 @@ def search():
         flash("Парсер превысил лимит времени", "error")
         return redirect(url_for('index'))
 
-    # Распаковка запроса
     parts = query.split()
     topic = " ".join(parts[:-1]) if parts and parts[-1].isdigit() else query
     min_budget = parts[-1] if parts and parts[-1].isdigit() else "0"
     max_budget = "9999999"
     region = ""
 
-    # Запускаем парсер
-    try:
+    # --- Готовим команды для запуска --- #
+    parsers = [
+        {"script": "puppeteer_guru.js", "result_file": "guru.json"},
+        {"script": "puppeteer_freelancer.js", "result_file": "freelancer.json"},
+    ]
+    errors = []
+    threads = []
+
+    for p in parsers:
         cmd = [
             "node",
-            os.path.join("parsers", "puppeteer_guru.js"),
+            os.path.join("parsers", p["script"]),
             topic,
             str(min_budget),
             str(max_budget),
             region
         ]
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=1000)
+        t = threading.Thread(target=run_parser, args=(cmd, p["result_file"], errors))
+        threads.append(t)
+        t.start()
 
-        if result.stderr:
-            logger.error(f"⚠️ STDERR puppeteer_guru.js → {result.stderr}")
-        if result.stdout:
-            logger.info(f"ℹ️ STDOUT puppeteer_guru.js → {result.stdout}")
+    # --- Дождаться завершения всех парсеров --- #
+    for t in threads:
+        t.join()
 
-    except subprocess.TimeoutExpired:
-        logger.error("⏰ Парсер превысил лимит времени")
-        return jsonify({"error": "Парсер превысил лимит времени"}), 500
-    except Exception as e:
-        logger.exception("Ошибка при запуске парсера")
-        return jsonify({"error": str(e)}), 500
+    # --- Считываем результаты --- #
+    jobs = []
+    for p in parsers:
+        try:
+            with open(os.path.join("results", p["result_file"]), "r", encoding="utf-8") as f:
+                jobs += json.load(f)
+        except Exception as e:
+            errors.append(f"Ошибка чтения {p['result_file']}: {e}")
 
-    # Чтение результатов
-    try:
-        with open(os.path.join("results", "guru.json"), "r", encoding="utf-8") as f:
-            jobs = json.load(f)
-    except Exception as e:
-        logger.exception("Ошибка чтения guru.json")
-        return jsonify({"error": "Не удалось прочитать результат парсера"}), 500
+    if errors:
+        flash(" / ".join(errors), "error")
 
     return render_template("index.html", jobs=jobs)
+
+
+@app.route('/results')
+def results():
+    jobs = session.pop('jobs', None)
+    return render_template('index.html', jobs=jobs)
 
 @app.route('/add', methods=['POST'])
 def add():
