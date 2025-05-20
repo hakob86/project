@@ -34,22 +34,29 @@ async function getWebSocketDebuggerUrl() {
     const wsUrl = await getWebSocketDebuggerUrl();
     const browser = await puppeteer.connect({ browserWSEndpoint: wsUrl });
 
-    const page = (await browser.pages())[0] || await browser.newPage();
-    await page.goto('https://www.upwork.com/', { waitUntil: 'networkidle2' });
+    // === Открываем localhost:5000 ===
+    logger.info('🌐 Открываю http://localhost:5000 ...');
+    const localPage = await browser.newPage();
+    await localPage.goto('http://localhost:5000', { waitUntil: 'networkidle2' });
 
-    logger.info('⏳ Войди в аккаунт вручную и нажми Enter...');
+    // === Открываем Upwork в новой вкладке ===
+    logger.info('🌐 Открываю https://www.upwork.com ...');
+    const upworkPage = await browser.newPage();
+    await upworkPage.goto('https://www.upwork.com/', { waitUntil: 'networkidle2' });
+
+    logger.info('⏳ Войди в аккаунт вручную (во вкладке Upwork) и нажми Enter...');
     await new Promise(resolve => {
       process.stdin.resume();
       process.stdin.once('data', () => resolve());
     });
 
-    const cookies = await page.cookies();
+    const cookies = await upworkPage.cookies();
     await fs.mkdir(path.dirname(cookiesPath), { recursive: true });
     await fs.writeFile(cookiesPath, JSON.stringify(cookies, null, 2));
     logger.info(`✅ Cookies сохранены в ${cookiesPath}`);
     process.exit(0);
   } catch (err) {
-    logger.error(`❌ Ошибка: ${err.message}`);
+logger.error(`❌ Ошибка: ${err && err.stack ? err.stack : err}`);
     process.exit(1);
   }
 })();

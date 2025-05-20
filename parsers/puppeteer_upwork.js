@@ -2,8 +2,8 @@ const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const fs = require('fs').promises;
 const path = require('path');
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-// Включаем Stealth-плагин — молодец, что заботишься об анонимности!
 puppeteer.use(StealthPlugin());
 
 async function wait(ms, msg) {
@@ -11,127 +11,124 @@ async function wait(ms, msg) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function autoScroll(page, maxScrolls = 10) {
+  for (let i = 0; i < maxScrolls; i++) {
+    await page.evaluate(() => window.scrollBy(0, window.innerHeight));
+    await wait(1200 + Math.random() * 600, `[DEBUG] Скроллим #${i + 1}`);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+}
+
+async function parseAllPages(page, topic, maxPages = 3) {
+  let allJobs = [];
+  for (let pageIndex = 1; pageIndex <= maxPages; pageIndex++) {
+    if (pageIndex > 1) {
+      // Переход на следующую страницу
+      const nextBtnSelector = `button[data-test="pagination-item"][data-ev-page_index="${pageIndex}"]`;
+      await page.waitForSelector(nextBtnSelector, { timeout: 15000 });
+      await page.click(nextBtnSelector);
+      await wait(4000, `[DEBUG] Перешли на страницу ${pageIndex}`);
+    }
+
+    // Делаем скроллинг для загрузки всех карточек
+    await autoScroll(page, 8);
+
+    // Собираем карточки на текущей странице
+    await page.waitForSelector('article[data-test="JobTile"]', { timeout: 30000 });
+    const jobs = await page.$$eval('article[data-test="JobTile"]', cards => cards.map(card => {
+      const title = card.querySelector('h2.job-tile-title, h2, h1, h3')?.innerText || 'Без названия';
+      const linkEl = card.querySelector('a[data-test*="job-tile-title-link"]');
+      const link = linkEl ? new URL(linkEl.getAttribute('href'), 'https://www.upwork.com').toString() : '';
+      const desc = card.querySelector('div[data-test="UpCLineClamp JobDescription"] p, p')?.innerText || '';
+      const published = card.querySelector('[data-test="job-pubilshed-date"] span:last-child')?.innerText || '';
+      const price = card.querySelector('li[data-test="is-fixed-price"] strong:last-child')?.innerText || '';
+      const type = card.querySelector('li[data-test="job-type-label"] strong')?.innerText || '';
+      const exp = card.querySelector('li[data-test="experience-level"] strong')?.innerText || '';
+      const location = card.querySelector('li[data-test="location"] span:not(.sr-only)')?.innerText || '';
+      const paymentVerified = !!card.querySelector('[data-test="payment-verified"]');
+      return { title, link, desc, published, price, type, exp, location, paymentVerified };
+    }));
+    allJobs = allJobs.concat(jobs);
+    console.log(`[INFO] Страница ${pageIndex}: собрано ${jobs.length} заказов`);
+  }
+  return allJobs;
+}
+
 (async () => {
   try {
-    const cookiesPath = path.resolve(__dirname, '../cookies/upwork_cookies.json');
+    const [, , topicRaw = 'ai'] = process.argv;
+    const topic = topicRaw.trim();
     const outputPath = path.resolve(__dirname, '../results/upwork.json');
 
-    // Подключение к реальному Chrome
+    // 1. Подключаемся к уже открытому Chrome
+    const response = await fetch('http://localhost:9222/json/version');
+    const data = await response.json();
+    const wsEndpoint = data.webSocketDebuggerUrl;
     const browser = await puppeteer.connect({
-      browserWSEndpoint: "ws://localhost:9222/devtools/browser/3c50b8ad-c3ee-4322-b682-5d1164ee983e",
+      browserWSEndpoint: wsEndpoint,
       defaultViewport: null,
     });
 
-    const page = await browser.newPage();
-
-    // Вставляем cookies
-    const cookies = JSON.parse(await fs.readFile(cookiesPath, 'utf-8'));
-    await page.setCookie(...cookies);
-
-    // --- Эмулируем запуск как человек ---
-    console.log('[INFO] Открываю Upwork...');
-    await page.goto('https://www.upwork.com/nx/search/jobs/?q=telegram%20bot', {
-      waitUntil: 'networkidle2',
-      timeout: 0,
-    });
-
-    // Имитация пользователя
-    await page.mouse.move(100 + Math.random()*200, 200 + Math.random()*100, {steps: 15});
-    await wait(1000 + Math.random()*2000, '[DEBUG] Двигаем мышь...');
-    await page.keyboard.press('Tab');
-    await wait(600 + Math.random()*800, '[DEBUG] Ждём после Tab...');
-    await page.mouse.move(180 + Math.random()*60, 280 + Math.random()*60, {steps: 12});
-    await wait(800 + Math.random()*800, '[DEBUG] Двигаем мышь...');
-    await page.keyboard.press('Tab');
-    await wait(600 + Math.random()*1000);
-
-    // Проверяем Cloudflare (Turnstile/Challenge)
-    const cfSelector = '.up-challenge-container';
-    let cfDetected = await page.$(cfSelector);
-    if (cfDetected) {
-      console.log('[INFO] Обнаружен Cloudflare Challenge. Ждём завершения...');
-      try {
-        await page.waitForFunction(
-          selector => !document.querySelector(selector),
-          { timeout: 120000 },
-          cfSelector
-        );
-        console.log('[INFO] Cloudflare пройден автоматически (или исчез сам).');
-      } catch {
-        throw new Error('Cloudflare Challenge не исчез — требуется ручное подтверждение!');
-      }
-    } else {
-      console.log('[INFO] Cloudflare-капча не обнаружена.');
+    // 2. Ищем уже открытую вкладку с Upwork (НЕ создаём новую!)
+    const pages = await browser.pages();
+    let page = pages.find(p => p.url().includes('upwork.com'));
+    if (!page) {
+      throw new Error('Нет открытой вкладки Upwork! Открой её вручную и пройди Cloudflare');
     }
 
-    // Ждём появления карточек заказов
-    let cardsLoaded = false;
-    for (let i = 0; i < 7; i++) {
-      try {
-        await page.waitForSelector('section.air3-card-section', { timeout: 15000 });
-        cardsLoaded = true;
-        break;
-      } catch {
-        console.log('[WARN] Карточки не загрузились, обновляю страницу...');
-        await page.reload({ waitUntil: 'networkidle2' });
-        await wait(3000 + Math.random()*2000, '[DEBUG] Ждём после reload...');
-      }
+    // 3. Всегда переходим на страницу поиска Upwork
+    await page.goto('https://www.upwork.com/nx/search/jobs/', { waitUntil: 'networkidle2', timeout: 60000 });
+    await wait(2000, '[DEBUG] Перешли на /search/jobs');
+    console.log('[DEBUG] Фактический URL:', page.url());
+    if (!page.url().includes('/search/jobs')) {
+      throw new Error('[FATAL] Не удалось попасть на /search/jobs. Ты на: ' + page.url());
     }
-    if (!cardsLoaded) throw new Error('Карточки заказов не загрузились за 7 попыток');
 
-    // Собираем уникальные ссылки заказов
-    const jobLinks = await page.$$eval(
-      'section.air3-card-section a[href*="/jobs/"]',
-      links => links.map(a => a.href).filter((v, i, a) => a.indexOf(v) === i)
-    );
-    console.log(`[INFO] Найдено ${jobLinks.length} заказов`);
+    // 4. Вводим поисковый запрос и жмём Enter (универсальный селектор)
+    await page.waitForSelector('input[type="search"][placeholder]', { timeout: 25000 });
+    const searchInput = await page.$('input[type="search"][placeholder]');
+    await searchInput.click({ clickCount: 3 });
+    await page.keyboard.press('Backspace');
+    await wait(400, '[DEBUG] Очищаем поле поиска...');
+    await searchInput.type(topic, { delay: 110 });
+    await wait(400, '[DEBUG] Вводим запрос...');
+    await page.keyboard.press('Enter');
+    await wait(3500, '[DEBUG] Ждём появления карточек...');
 
-    const jobs = [];
-    for (const [idx, link] of jobLinks.entries()) {
-      console.log(`[INFO] (${idx + 1}/${jobLinks.length}) Захожу в задание: ${link}`);
-
-      try {
-        await page.goto(link, { waitUntil: 'networkidle2', timeout: 0 });
-        await wait(5000 + Math.random()*3000, '[DEBUG] Имитируем чтение задания...');
-
-        await page.mouse.move(
-          100 + Math.random()*500, 100 + Math.random()*300, { steps: 13 }
-        );
-        await wait(1200 + Math.random()*1200);
-
-        // Получаем данные карточки
-        const title = await page.$eval('h1', el => el.innerText).catch(() => 'Без названия');
-        const description = await page.$$eval('p', els => els.map(el => el.innerText).join('\n')).catch(() => 'Нет описания');
-        const budget = await page.$eval('[data-qa="budget"], [data-test="budget"]', el => el.innerText).catch(() => '—');
-        const category = await page.$$eval('[data-test="job-category"] span', els => els.map(e => e.innerText).join(', ')).catch(() => '');
-        const location = await page.$eval('li[data-qa="client-location"] strong', el => el.innerText).catch(() => 'Не указано');
-        const paymentVerified = await page.$eval('[data-qa="client-payment-verification-status"]', el => el.innerText.includes('Verified')).catch(() => false);
-
-        const shortDesc = description.split('\n')[0]?.slice(0, 200);
-
-        jobs.push({ title, budget, category, location, paymentVerified, description, shortDesc, link });
-        console.log(`[INFO] ✔️ Сохранил: ${title.slice(0, 40)}`);
-      } catch (e) {
-        console.warn(`[WARN] Ошибка при парсинге задания: ${link}`, e);
-      }
-
-      // Возвращаемся на страницу поиска
-      try {
-        await page.goto('https://www.upwork.com/nx/search/jobs/?q=telegram%20bot', { waitUntil: 'networkidle2', timeout: 0 });
-        await wait(5000 + Math.random()*2000, '[DEBUG] Ждём после возврата...');
-      } catch (e) {
-        console.warn('[WARN] Не удалось вернуться на страницу поиска. Перезапускаю страницу...');
-        await page.reload({ waitUntil: 'networkidle2' });
-        await wait(3000 + Math.random()*1500);
-      }
-    }
+    // 5. Парсим все страницы пагинации
+    const jobs = await parseAllPages(page, topic, 3); // 3 страницы
 
     await fs.writeFile(outputPath, JSON.stringify(jobs, null, 2), 'utf-8');
-    console.log('[DONE] Сохранено в upwork.json — ты реально молодец, автоматизация топ!');
+    console.log(`[DONE] Сохранено ${jobs.length} заказов в ${outputPath}`);
 
-    await browser.disconnect();
+    // --- ЛОГАУТ ПОСЛЕ ПАРСИНГА ---
+    try {
+      let userMenuBtn = await page.$('button[aria-label="Open user menu"]');
+      if (!userMenuBtn) userMenuBtn = await page.$('img.nav-user-avatar');
+      if (!userMenuBtn) throw new Error('Нет кнопки меню пользователя!');
+      await userMenuBtn.click();
+      await wait(1000, '[DEBUG] Открыл меню пользователя...');
+      await page.waitForSelector(
+        'button[data-cy="logout-trigger"], a[href*="logout"], button[data-ev-label="logout"]',
+        { timeout: 10000 }
+      );
+      const logoutBtn = await page.$('button[data-cy="logout-trigger"], a[href*="logout"], button[data-ev-label="logout"]');
+      if (!logoutBtn) throw new Error('Не найдена кнопка logout!');
+      await logoutBtn.click();
+      await wait(2000, '[INFO] Logout (Sign Out) успешно выполнен!');
+      console.log('[INFO] Выполнен logout аккаунта Upwork');
+    } catch (err) {
+      console.warn('[WARN] Не удалось выполнить logout:', err.message);
+    }
+
+    await browser.disconnect?.();
+
   } catch (err) {
-    console.error('[ERROR]', err);
-    process.exit(1);
+    logger.error(`❌ Ошибка: ${err.message}`);
+  } finally {
+    if (browser) {
+      await wait(10000, '📴 Закрытие браузера');
+      await browser.close();
+    }
   }
 })();

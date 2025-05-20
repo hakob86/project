@@ -161,11 +161,56 @@ def run_parser(cmd, result_file, errors):
     except Exception as e:
         errors.append(f"Ошибка запуска {cmd[1]}: {e}")
 
+class ParserRunner:
+    def __init__(self, parsers):
+        self.parsers = parsers
+        self.errors = []
+        self.results = []
+
+    def run_parser(self, cmd, result_file):
+        try:
+            # Здесь можно вставить subprocess или реальный вызов
+            exit_code = os.system(" ".join(cmd))  # Лучше subprocess.Popen для реальных проектов!
+            if exit_code != 0:
+                self.errors.append(f"Ошибка запуска {' '.join(cmd)}")
+                return
+
+            result_path = os.path.join("results", result_file)
+            if os.path.exists(result_path):
+                with open(result_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, list):
+                        self.results.extend(data)
+                    else:
+                        self.errors.append(f"Файл {result_file} повреждён или пустой.")
+            else:
+                self.errors.append(f"Файл {result_file} не найден.")
+        except Exception as e:
+            self.errors.append(f"Ошибка {result_file}: {e}")
+
+    def start(self, topic, min_budget, max_budget, region):
+        threads = []
+        for p in self.parsers:
+            cmd = [
+                "node",
+                os.path.join("parsers", p["script"]),
+                topic,
+                str(min_budget),
+                str(max_budget),
+                region
+            ]
+            t = threading.Thread(target=self.run_parser, args=(cmd, p["result_file"]))
+            threads.append(t)
+            t.start()
+        for t in threads:
+            t.join()
+        return self.results, self.errors
+
 @app.route('/search', methods=['POST'])
 def search():
     query = request.form.get("query", "").strip()
     if not query:
-        flash("Парсер превысил лимит времени", "error")
+        flash("Пустой запрос!", "error")
         return redirect(url_for('index'))
 
     parts = query.split()
@@ -174,42 +219,19 @@ def search():
     max_budget = "9999999"
     region = ""
 
-    # --- Готовим команды для запуска --- #
     parsers = [
         {"script": "puppeteer_guru.js", "result_file": "guru.json"},
         {"script": "puppeteer_freelancer.js", "result_file": "freelancer.json"},
+        {"script": "puppeteer_upwork.js", "result_file": "upwork.json"},
     ]
-    errors = []
-    threads = []
 
-    for p in parsers:
-        cmd = [
-            "node",
-            os.path.join("parsers", p["script"]),
-            topic,
-            str(min_budget),
-            str(max_budget),
-            region
-        ]
-        t = threading.Thread(target=run_parser, args=(cmd, p["result_file"], errors))
-        threads.append(t)
-        t.start()
-
-    # --- Дождаться завершения всех парсеров --- #
-    for t in threads:
-        t.join()
-
-    # --- Считываем результаты --- #
-    jobs = []
-    for p in parsers:
-        try:
-            with open(os.path.join("results", p["result_file"]), "r", encoding="utf-8") as f:
-                jobs += json.load(f)
-        except Exception as e:
-            errors.append(f"Ошибка чтения {p['result_file']}: {e}")
+    runner = ParserRunner(parsers)
+    jobs, errors = runner.start(topic, min_budget, max_budget, region)
 
     if errors:
         flash(" / ".join(errors), "error")
+    elif not jobs:
+        flash("Нет найденных заказов", "warning")
 
     return render_template("index.html", jobs=jobs)
 
