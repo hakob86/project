@@ -13,7 +13,7 @@ async function wait(ms, msg) {
 
 async function getBrowser() {
   // Только режим connect!
-  const response = await fetch('http://localhost:9222/json/version');
+  const response = await fetch('http://localhost:9223/json/version');
   const data = await response.json();
   const wsEndpoint = data.webSocketDebuggerUrl;
   return await puppeteer.connect({

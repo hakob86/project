@@ -10,7 +10,7 @@ const cookiesPath = path.resolve(__dirname, 'guru_cookies.json');
 (async () => {
   try {
     console.log('🚀 Получаем WebSocket-адрес Chrome...');
-    const res = await fetch('http://localhost:9222/json/version');
+    const res = await fetch('http://localhost:9223/json/version');
     const data = await res.json();
     const wsEndpoint = data.webSocketDebuggerUrl;
 

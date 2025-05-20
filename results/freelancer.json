@@ -1,219 +1,220 @@
 [
   {
     "title": "Project Details",
-    "budget": "₹1,500.00 – 12,500.00 INR",
-    "description": "I'm looking for a skilled full stack web developer to create an e-commerce website using custom HTML, CSS, and JavaScript. \n\nKey Requirements:\n- User Account Management: Enable users to create, manage, and customize their accounts.\n- Chatbot Integration: Implement an AI-driven chatbot for customer support and interaction.\n- Data Analytics Prediction Model: Develop a model to analyze user behavior and predict trends.\n\nIdeal Skills & Experience:\n- Strong expertise in HTML, CSS, and JS.\n-strong command on frontend and backend \n- Experience in building robust e-commerce platforms.\n- Proficiency in AI and data analytics.\n- Previous work on user account management systems.",
+    "budget": "$30.00 – 250.00 USD",
+    "description": "Design and implement a multi-source, real-time video analytics and\nstreaming platform that:\n- Aggregates feeds from multiple webcams or IP cameras\n- Applies AI-powered analytics (e.g., person detection, motion\nheatmaps) on a server\n- Streams both raw and annotated video to clients using GStreamer\n- Provides a REST API for dynamic control and monitoring\n- Includes MQTT as an optional messaging layer for advanced\nsynchronization\n- Offers a simple OpenCV-based client (or web page) to view streams\nSystem Architecture\n1. Video Ingestion Layer\n- GStreamer pipelines capture N sources (webcam streams) in\nparallel.\n2. Server-Side Analytics Engine\n- In Python (OpenCV + TensorFlow/PyTorch), processes each\nframe for:\n- Person/object detection (e.g., YOLOv5 Tiny, SSD, ...)\n- Motion heatmaps or object tracking stats (optional)\n- Outputs annotated frames (bounding boxes/overlays) and\nmetadata.\n3. Streaming Server\n- Uses GStreamer to publish:\n- Raw video feeds\n- Annotated video feeds\n4. REST API Server\n- Built with Flask or FastAPI\n- Endpoints to:\n- Start/stop individual streams\n- Adjust encoding params (resolution, framerate, bitrate)\n- Query system status and analytics metrics\n5. Optional: MQTT Integration\n- Mosquitto broker + Paho clients\n- Topics for control commands and event publishes\n6. Client Application\n- Simple Python/OpenCV script (or HTML5 video player)\n- Connects to endpoints and displays video\n- (Bonus) Subscribes to MQTT topics for real-time alerts",
     "skills": [
       "JavaScript",
       "Python",
-      "Website Design",
-      "MySQL",
-      "WEBDEV"
-    ],
-    "location": "India",
-    "rating": "0.0",
-    "projectId": "39416273",
-    "verifications": [
-      "Rating: 0.0 out of 5",
-      "FLFrank is offline.",
-      "Verified by Freelancer badge"
-    ],
-    "link": "https://www.freelancer.com/projects/javascript/Full-Stack-Dev-for-commerce-39416273",
-    "client": {}
-  },
-  {
-    "title": "Project Details",
-    "budget": "$250.00 – 750.00 CAD",
-    "description": "Overview: We need a fast, responsive website where users can search for any “Top X” list (e.g. best restaurants, best AI tools, top marketing platforms, etc.). The system should automatically generate accurate results, but all results must also be editable by admins via a panel.  Frontend Requirements: Homepage with a search bar (e.g. “Best AI tools”) When users search, display a Top X list (X = adjustable number) Each result should include: Rank Name Short description Image/logo Link (optional) Fully responsive (mobile + desktop) SEO optimized Fast load time  Backend / Admin Panel: Admin login system Add/edit topics (e.g., “Top 10 Productivity Tools”) Add/edit items under each topic Set number of items shown (Top 3, 5, 10, etc.) Ability to toggle between: Auto mode (auto-generated results via API or scraping) Manual mode (admin-defined results)  Tech Preference: Platform: WordPress (preferred) Should include a custom admin panel or use plugins (ACF, Custom Post Types) Compatible with Elementor or similar page builder (if needed) project budget: 400 CAD MAX figma link: https://www.figma.com/design/9WqAkRMqxhGag6QPgHTc9d/Easy.best?node-id=0-1&t=DJYcTCEcuQaHK4XA-1",
-    "skills": [
-      "PHP",
-      "Website Design",
-      "WordPress",
-      "CSS",
-      "HTML"
-    ],
-    "location": "Canada",
-    "rating": "0.0",
-    "projectId": "39415822",
-    "verifications": [
-      "Rating: 5.0 out of 5",
-      "FLFrank is offline.",
-      "Verified by Freelancer badge"
-    ],
-    "link": "https://www.freelancer.com/projects/php/Website-for-top",
-    "client": {}
-  },
-  {
-    "title": "Project Details",
-    "budget": "€12.00 – 18.00 EUR per hour",
-    "description": "We are building an application in which we fully integrate Open AI. For this project my team of programmers is looking for a highly skilled and very well experienced project manager who has tons of experience in managing Open AI projects.. Your job is to manage the project, supervise the team of programmers and designers and make Q & A and testing. Final testing will be done by the company owner to who the projects manager directly reports to.",
-    "skills": [
-      "Project Management",
-      "OpenAI",
-      "ChatGPT"
-    ],
-    "location": "Netherlands",
-    "rating": "0.0",
-    "projectId": "39415850",
-    "verifications": [
-      "Rating: 5.0 out of 5",
-      "FLFrank is offline.",
-      "Verified by Freelancer badge"
-    ],
-    "link": "https://www.freelancer.com/projects/chatgpt/Open-Application-building",
-    "client": {}
-  },
-  {
-    "title": "Project Details",
-    "budget": "₹37,500.00 – 75,000.00 INR",
-    "description": "Suvpriya Nexus Private Limited is looking for an experienced full-stack developer or team to build a powerful, AI-enabled ERP + CRM platform and a corporate website.\n\nThis is a board-approved project with a total budget of INR 1,00,000 (inclusive of GST).\nWe require strict adherence to the approved blueprint and milestone delivery.\n\nScope Includes:\n\nERP Modules:\n\nFinance & Accounting\n\nInventory & Procurement\n\nHRM (basic)\n\nProject Management\n\nCompliance Tracking\n\nAI Analytics (basic KPIs & forecasting)\n\n\nCRM Modules:\n\nLead & Contact Management\n\nSales Pipeline Tracking\n\nPredictive Lead Scoring\n\nEmail/Chat Integration\n\nMarketing Campaigns\n\nSupport Ticket System\n\n\nCompany Website:\n\nHome, About, Services, CSR, Contact, AI Products\n\nMobile responsive, SEO-ready, CMS-backed\n\n\nTechnical Stack (Required):\n\nFrontend: React.js\n\nBackend: Django + FastAPI\n\nDatabase: PostgreSQL + Redis\n\nAI/ML: Python (TensorFlow, Scikit-learn)\n\nAuthentication: JWT + OAuth2\n\nHosting: AWS (EC2, RDS, S3)\n\n\nProject Timeline: 4 Phases (120 days total)\n\nERP Core (45 days)\n\nCRM Integration (30 days)\n\nWebsite (30 days)\n\nTesting & Deployment (15 days)\n\n\nMilestones will be strictly monitored with source code reviews and demos.\n\nDeliverables:\n\nFull source code (GitHub)\n\nDeployment on AWS\n\nDocumentation & basic user manual\n\nSupport during testing phase\n\n\nRequired Experience:\n\nProven expertise with Django and React\n\nPrior work with ERP/CRM platforms\n\nFamiliarity with AI tools and cloud deployment",
-    "skills": [
-      "PHP",
-      "Python",
-      "Website Design",
+      "Linux",
       "Software Architecture",
-      "Amazon Web Services"
+      "Arduino"
     ],
-    "location": "India",
+    "location": "Turkey",
     "rating": "0.0",
-    "projectId": "39415829",
+    "projectId": "39424580",
     "verifications": [
       "Rating: 0.0 out of 5",
-      "FLFrank is offline.",
+      "FLFrank is online.",
       "Verified by Freelancer badge"
     ],
-    "link": "https://www.freelancer.com/projects/python/Develop-Based-ERP-CRM-Platform",
-    "client": {}
-  },
-  {
-    "title": "Project Details",
-    "budget": "₹600.00 – 1,500.00 INR",
-    "description": "Project Overview:\nI’m looking for an experienced full-stack developer to build a simple yet powerful AI-powered blog/article generation tool with an admin dashboard. The goal is to allow users to input a topic and get well-structured blog content generated using GPT (OpenAI API), which they can save, edit, and export.\n\nKey Features:\n Frontend (User-Facing)\nSimple, clean UI with form input for article topic/keywords\n\nOutput section to show AI-generated article\n\nOption to edit and export article (PDF/Word)\n\nResponsive design (mobile + desktop)\n\n  Backend (Admin Dashboard)\nAdmin login & authentication\n\nManage user history (view, delete articles)\n\nAPI usage tracking\n\nUser management & usage quota settings\n\n  AI Integration\nUse OpenAI API to generate high-quality blog articles\n\nAdjustable tone and length (short, medium, long)\n\nDeliverables:\nFully functional web app\n\nSource code + deployment instructions\n\nDocumentation on how to use and manage the app\n\nIdeal Freelancer:\nStrong experience with Python (Flask/Django) & React or Vue\n\nFamiliar with OpenAI or GPT API integration\n\nSkilled in building secure and scalable web apps\n\nGood communication and ability to deliver clean, tested code",
-    "skills": [
-      "PHP",
-      "JavaScript",
-      "Python",
-      "Django",
-      "HTML"
-    ],
-    "location": "India",
-    "rating": "0.0",
-    "projectId": "39408404",
-    "verifications": [
-      "Rating: 0.0 out of 5",
-      "FLFrank is offline.",
-      "Verified by Freelancer badge"
-    ],
-    "link": "https://www.freelancer.com/projects/python/Powered-Blog-Generation-Tool-Development",
-    "client": {}
-  },
-  {
-    "title": "Project Details",
-    "budget": "₹1,500.00 – 12,500.00 INR",
-    "description": "We are on the lookout for a skilled and innovative freelancer to collaborate on the creation and monetization of an exciting AI-powered YouTube or Cartoon channel. This project aims to leverage artificial intelligence to produce engaging and entertaining content, appealing to a wide audience.\n\nKey Responsibilities:\n\nContent Creation: Utilize AI technologies to generate captivating and original content for the YouTube or Cartoon channel. This may involve creating animated videos, developing unique characters, or employing AI algorithms to enhance storytelling.\n\nChannel Design and Branding: Design an appealing visual identity for the channel, ensuring it aligns with the target audience and theme. This includes creating a recognizable logo, channel art, and maintaining a cohesive brand throughout the content.\n\nMonetization Strategies: Develop effective strategies to monetize the channel, considering options such as ad revenue, sponsorships, merchandise, and other potential income streams. Implement and optimize monetization methods to maximize revenue.\n\nAudience Engagement: Implement techniques to build and engage a loyal audience. This includes fostering community interaction, responding to comments, and developing a social media presence to promote the channel.\n\nSEO Optimization: Utilize SEO best practices to optimize video titles, descriptions, and tags for improved discoverability on YouTube and other platforms.\n\nQualifications:\n\nProven experience in content creation, particularly in the realm of YouTube or animation.\nProficiency in AI technologies, with the ability to integrate AI into content creation processes.\nUnderstanding of YouTube's monetization policies and experience implementing successful monetization strategies.\nStrong design skills for creating visually appealing channel art and branding elements.\nExcellent communication skills and a creative mindset.\n\nWho to Apply:\nIf you are a talented freelancer with a passion for AI-driven content creation and channel monetization, we want to hear from you! Please submit your portfolio, a brief overview of your relevant experience, and a proposal outlining your approach to creating and monetizing the channel\n\nI will share you channel link kindly check the videos and upload some more videos and make it monitize",
-    "skills": [
-      "Website Design",
-      "Graphic Design",
-      "WordPress",
-      "Google Adsense",
-      "HTML"
-    ],
-    "location": "India",
-    "rating": "0.0",
-    "projectId": "39415093",
-    "verifications": [
-      "Rating: 0.0 out of 5",
-      "FLFrank is offline.",
-      "Verified by Freelancer badge"
-    ],
-    "link": "https://www.freelancer.com/projects/website-design/Driven-YouTube-Channel-Development",
-    "client": {}
-  },
-  {
-    "title": "Project Details",
-    "budget": "€8.00 – 30.00 EUR",
-    "description": "I'm looking for an experienced web developer to create a professional and engaging web page for my artificial intelligence software solutions. The primary goal of this page is to showcase our innovative products and services.\n\nKey Requirements:\n- User-friendly interface\n- High-quality visuals and graphics\n- SEO optimization\n- Mobile responsiveness\n- Detailed product/service descriptions\n\nIdeal Skills and Experience:\n- Proficiency in web development (HTML, CSS, JavaScript)\n- Experience with SEO and mobile optimization\n- Strong graphic design skills\n- Familiarity with AI industry trends\n- Portfolio of similar projects\n\nPlease provide samples of previous work and a brief outline of your approach. Looking forward to your bids!",
-    "skills": [
-      "Website Design",
-      "Graphic Design",
-      "CSS",
-      "User Interface / IA",
-      "HTML"
-    ],
-    "location": "Spain",
-    "rating": "0.0",
-    "projectId": "39414830",
-    "verifications": [
-      "Rating: 0.0 out of 5",
-      "FLFrank is offline.",
-      "Verified by Freelancer badge"
-    ],
-    "link": "https://www.freelancer.com/projects/website-design/Solutions-Showcase-Website",
+    "link": "https://www.freelancer.com/projects/python/Intelligent-Multi-Source-Video-Analytics",
     "client": {}
   },
   {
     "title": "Project Details",
     "budget": "$250.00 – 750.00 USD",
-    "description": "I need to migrate my website from WordPress to Zoho Sites. \n\nRequirements:\n- Retain the existing structure, theme, and all content.\n- Maintain theme, structure, colors, and logo\n- Ultilize zoho One ecosystem: Embed Zoho Forms; Integrate Zoho CRM; AI-chatbot from Zoho SalesIQ\n\nIdeal Skills and Experience:\n- Experience with both WordPress and Zoho Sites\n- Strong understanding of website migration\n- Attention to detail to preserve existing design and functionality\n\nPlease connect for website URL and analysis.",
+    "description": "Job Title:\nCryptography Developer (TFHE + Genetic Algorithm Optimization)\n\nProject Title:\n“Optimizing Torus Fully Homomorphic Encryption (TFHE) using Genetic Algorithm (TFHE+GA): An Indirect Approach”\n\nProject Overview:\nWe seeking a skilled and research-oriented developer to assist in the simulation, implementation and optimization of TFHE (Torus Fully Homomorphic Encryption) using Genetic Algorithm (GA) strategies. This role is part of a doctoral research project aimed at significantly improving bootstrapping performance, ciphertext size, and key sizes without compromising cryptographic security.\n\nKey Objectives:\nThe developer will help achieve the following specific goals:\na. Develop and evaluate GA-based strategies for optimizing the bootstrapping process in TFHE, targeting a 20% reduction in bootstrapping time (from 13 ms to ~10.4 ms).\nb. Implement GA-based techniques to minimize the number of bootstrapping operations for evaluating complex Boolean functions in TFHE, with a target reduction of 15%.\nc. Optimize the trade-off between cleartext bit-size and the number of homomorphic additions before bootstrapping, aiming for a 10% reduction in ciphertext size while maintaining cryptographic security.\nd. Design and evaluate GA-based methods for reducing key and ciphertext sizes in TFHE, targeting a 50% reduction in key size without sacrificing the security of current NTRU-based encryption schemes.\n\nResponsibilities:\nSimulate, Implement and modify TFHE libraries in C++ or Python (preferably TFHE, Concrete-ML, or similar)\n\nDesign and integrate Genetic Algorithm frameworks using Python (e.g., DEAP, PyGAD, or custom-built solutions)\n\nBenchmark and test cryptographic performance (time, size, and security level)\n\nDocument code, experiments, and optimizations for inclusion in research publications and dissertation materials\n\nWork collaboratively with the principal researcher and provide regular progress updates\n\nRequired Skills & Qualifications:\nStrong experience with cryptographic programming (especially homomorphic encryption, ideally TFHE)\n\nProficiency in Genetic Algorithms and optimization techniques\n\nProficient in C++ and Python (especially libraries for crypto and evolutionary computation)\n\nFamiliarity with performance profiling, optimization, and benchmarking tools\n\nBackground in computer science, mathematics, cryptography, or related field (graduate degree preferred, but not required)\n\nPreferred Qualifications:\nPrevious experience with FHE libraries (TFHE, Concrete, SEAL, PALISADE, etc.)\n\nUnderstanding of noise management, bootstrapping, and ciphertext parameter tuning\n\nFamiliarity with NTRU and lattice-based cryptographic schemes\n\nPublished work or demonstrable portfolio related to crypto/GA/AI optimization\n\nProject Duration: \n3 days for the GA simulation (urgent) and another days for TFHE (with possible extension based on performance and results)\n\nCompensation:\nNegotiable, based on experience and contribution level\n\nWork Arrangement:\nRemote",
     "skills": [
-      "PHP",
-      "Website Design",
-      "WordPress",
-      "MySQL",
-      "HTML"
+      "Python",
+      "Cryptography",
+      "C++ Programming",
+      "Genetic Algorithms"
     ],
-    "location": "Vietnam",
+    "location": "Philippines",
     "rating": "0.0",
-    "projectId": "39414556",
+    "projectId": "39424004",
     "verifications": [
       "Rating: 0.0 out of 5",
-      "FLFrank is offline.",
+      "FLFrank is online.",
       "Verified by Freelancer badge"
     ],
-    "link": "https://www.freelancer.com/projects/php/Migrate-WordPress-Zoho-Site",
+    "link": "https://www.freelancer.com/projects/cplusplus-programming/Torus-based-Fully-Homomorphic-Encryption",
     "client": {}
   },
   {
     "title": "Project Details",
-    "budget": "$80.00 – 150.00 USD",
-    "description": "I made an application using Lovable. It have a form builder and a page to create the integration with AI. It have many problems: it don't save inside the database some form; it don't comunicate from website and admin (for example the editor of web page don't comunicate with web page); the form buider have many problems It is necessary make some changes to adapt to concept of jot form and surveyjs); the page to create the integration aren't perfect and it is necessary solve some problem and test to verify if work; It is necessary verify the registration, login and checkou; it is necessary make better the design. If you want verify the status of app I have the code that I can send. The database is inside Supabase. It is necessary competence in Ai integration and Form builder. The project use: •\tReact con TypeScript\n•\tTailwind CSS per lo styling\n•\tSupabase per database e autenticazione\n•\tShadcn UI per componenti\nMy max budget is 150$. answer me if can do the competence to do and if is ok the budget. And send me similar job made",
+    "budget": "£3,000.00 – 5,000.00 GBP",
+    "description": "he goal is to build an AI poker bot that can play multi-player, no-limit Texas Hold'em at any table (e.g., 6-max, 9-max). The bot must have a combination of GTO (Game Theory Optimal) play, reinforcement learning to adapt to different opponents, and opponent modeling to exploit weaknesses. It will make real-time decisions within 5 seconds, using OCR to read the game state and make decisions.\n\n1. Development Environment and Tools\nHardware:\n\nGPU: At least NVIDIA RTX 3060 or higher.\n\nCPU: Intel i7 or AMD Ryzen 7.\n\nRAM: 16GB or more.\n\nStorage: 500GB SSD for fast read/write speeds.\n\nSoftware:\n\nPython: Programming language.\n\nTensorFlow or PyTorch: For building and training the reinforcement learning models.\n\nOpenAI Gym: For creating a simulated poker environment.\n\nPyPokerEngine or OpenHold’em: For poker game simulations.\n\nTesseract OCR or Google Vision API: For capturing real-time game data from the screen.\n\n2. Create the Poker Game Environment\nMulti-Table Play: Set up the environment to support multi-player play (e.g., 6-max and 9-max). The AI should be able to handle different numbers of players at the table.\n\nThe bot will adapt to table size and adjust its strategies for multi-player dynamics (e.g., tighter play in a full table and looser play in short-handed games).\n\nImplement configurable tables: Ability to simulate various blinds, stack sizes, and player positions.\n\nGame Logic:\n\nImplement the basic poker game rules: dealing cards, betting rounds, showdown, hand ranking, etc.\n\nEnsure proper handling of game states: pre-flop, post-flop, turn, river, and showdown.\n\n3. GTO-based Strategy Integration\nGTO Solver Integration:\n\nUse pre-solved GTO strategies for the AI’s baseline decision-making.\n\nImplement PioSolver or GTO+ (or similar solvers) to get optimal strategies for opening ranges, bet sizing, and post-flop play.\n\nThis will serve as the foundation for the AI's play, ensuring it plays solidly in various situations.\n\nIncorporate GTO Data:\n\nLoad GTO strategies for each hand and situation. The bot will follow these strategies unless opponent modeling or reinforcement learning suggests a better alternative.\n\nThe GTO data should cover a variety of scenarios, including raise sizes, c-betting, check-raising, and bluffing.\n\n4. Build Reinforcement Learning (RL) System\nSelf-Play Training:\n\nImplement reinforcement learning where the AI learns by playing against itself. The bot will train using Deep Q Networks (DQN) or Proximal Policy Optimization (PPO).\n\nQ-learning will be used to model optimal decisions (e.g., call, fold, raise) based on hand strength and game context.\n\nReward Function:\n\nDefine a reward function to provide feedback for actions:\n\nPositive rewards for winning pots, making correct value bets, folding losing hands.\n\nNegative rewards for losing money (e.g., over-bluffing, poor value betting).\n\nImplement exploration vs. exploitation balance, where the AI explores new strategies but also exploits what works against its opponents.\n\nOpponent Modeling:\n\nImplement a system to track opponent behavior (tight, loose, aggressive, passive) across multiple sessions.\n\nAllow the AI to adjust its strategy based on observed opponent tendencies:\n\nExploitative play: If the opponent is weak (e.g., calls too much), the AI will adjust by being more aggressive.\n\nTight players: The AI will adjust by bluffing less and value betting more.\n\nAdaptability:\n\nAllow the bot to switch strategies between GTO and exploitative play based on opponent tendencies.\n\nTrack and record opponent behaviors over time to fine-tune the AI’s adaptive strategies.\n\n5. OCR Integration for Real-Time Play\nScreen Capture:\n\nUse OCR (Optical Character Recognition) (Tesseract or Google Vision API) to capture game state data:\n\nPlayer's hand.\n\nCommunity cards.\n\nPot size and betting history.\n\nThe OCR should extract text and images from the poker client (e.g., PokerStars, 888poker).\n\nReal-Time Data Feeding:\n\nSend this captured data to the AI’s decision-making model for analysis.\n\nEnsure real-time processing to enable the AI to make decisions within 5 seconds of receiving the data.\n\n6. Decision Engine for Real-Time Actions\nDecision Making:\n\nOnce the game data is captured, the AI will process it and decide whether to fold, call, raise.\n\nThe AI’s decision will be based on:\n\nGTO strategies.\n\nOpponent behavior.\n\nCurrent game state (hand strength, position, stack size).\n\nOutputs should be clear instructions (e.g., “Raise $20”, “Fold”, “Call $15”).\n\nBet Sizing:\n\nImplement a bet sizing strategy based on the context, position, and opponent. The AI should vary its bet size to maximize EV (Expected Value).\n\nUse range balancing to ensure the AI doesn’t become predictable.\n\n7. Training, Testing, and Evaluation\nTraining and Self-Play:\n\nBegin training with self-play in a simulated environment. Let the AI play millions of hands to learn optimal strategies.\n\nEvaluate performance after every training cycle by comparing its performance to pre-solved GTO solutions.\n\nTesting Against Real Opponents:\n\nTest the AI against human players or other bots (e.g., low-level bots or GTO-based bots) to evaluate its adaptability and exploitation skills.\n\nMonitor the bot’s win rate, bluffing frequency, and adjustment to opponent behavior.\n\nTuning Hyperparameters:\n\nContinuously adjust the hyperparameters (learning rate, exploration-exploitation balance, etc.) to fine-tune the model’s performance.\n\n8. Real-Time Deployment and Integration\nIntegrate with Poker Client:\n\nEnsure seamless integration of the AI with poker platforms (e.g., PokerStars, 888poker).\n\nThe AI should be able to read the screen, process data, and output decisions in real-time.\n\nUser Interface:\n\nDevelop a simple interface that shows the AI’s decision-making process (e.g., Raise $20, Call $10).\n\nAllow users to track the AI’s performance and settings (e.g., select table size, change bet sizes, etc.).\n\n9. Monetization and Business Model\nSubscription Model:\n\nCharge users a monthly subscription fee for access to the AI. Provide basic functionality with premium upgrades for more advanced features (e.g., custom strategies, real-time advice).\n\nFreemium Model:\n\nOffer a free trial or a limited version of the AI (e.g., no multi-table support, limited strategies), and offer a premium version with full functionality for a subscription fee.\n\nMarketing:\n\nMarket to online poker players via social media, Twitch, and poker forums. Leverage affiliate marketing with poker platforms.\n\n10. Ongoing Maintenance and Updates\nRegular Updates:\n\nContinuously improve the AI’s performance by adding new features, updating strategies, and adapting to changes in the poker meta.\n\nRegularly test the bot against real players to ensure its effectiveness.\n\nBug Fixes and Optimization:\n\nAddress any bugs or inefficiencies in the system. Continuously optimize performance to reduce latency and improve decision-making speed.",
+    "skills": [
+      "Python",
+      "Testing / QA",
+      "Machine Learning (ML)",
+      "Reinforcement Learning"
+    ],
+    "location": "United Kingdom",
+    "rating": "0.0",
+    "projectId": "39424009",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/machine-learning/Task-Automation-Software-Development",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "$750.00 – 1,500.00 USD",
+    "description": "I am looking for event photo booth software. The booth should be advanced with photography features.\n\n- Customizable backgrounds\n- Animated GIF creation\nGreen screen\nAI features with interchangeable characters\nPrints in all sizes\n360 video capture with effects\n- Instant sharing on social media\n- AI integration for enhanced interactivity\n\nIdeal skills and experience:\n- Experience setting up a photo booth, especially outdoor designs\n- Knowledge of AI technologies in photo booths\n- Strong social media integration capabilities\n- Creative design for customizable backgrounds\n\nPlease provide examples of previous work and any relevant technical specifications.",
     "skills": [
       "PHP",
-      "React.js",
-      "Typescript",
-      "ChatGPT"
+      "Mobile App Development",
+      "Software Architecture",
+      "HTML",
+      "Visual Basic for Apps"
     ],
-    "location": "Italy",
+    "location": "Israel",
     "rating": "0.0",
-    "projectId": "39414526",
+    "projectId": "39423449",
     "verifications": [
-      "Rating: 5.0 out of 5",
-      "FLFrank is offline.",
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
       "Verified by Freelancer badge"
     ],
-    "link": "https://www.freelancer.com/projects/php/Finish-web-application-made-using-39414526",
+    "link": "https://www.freelancer.com/projects/logo-design/Corporate-Open-Air-Photo-Booth",
     "client": {}
   },
   {
     "title": "Project Details",
-    "budget": "₹100.00 – 400.00 INR per hour",
-    "description": "I need a Python program that implements an adversarial training framework to fine-tune GPT-3 for generating misinformation that evades AI text detectors.\n\nKey Components:\n- Generator Model: Uses prompts to create fake news.\n- Detector Model: Classifies text as AI-generated or human-written.\n\nTraining Process:\n- The generator uses PPO to minimize the detector's confidence in its classification.\n- The detector is periodically retrained on increasingly deceptive texts to enhance its robustness.\n\nRequirements:\n- Proficiency in Python and machine learning\n- Experience with reinforcement learning, particularly PPO\n- Familiarity with language models, especially GPT-3\n- Knowledge of adversarial training techniques\n\nThe final output should include:\n- A robust AI misinformation generator\n- A resilient detector trained on adversarial examples\n\nPlease provide tools and datasets for evaluating and improving detection systems.",
+    "budget": "$10.00 – 30.00 USD",
+    "description": "Tradimg bot wit causor ai \nTrading\n\n이미지 screenshot.png에는 특정 주식의 차트가 포함되어 있습니다.\n\n1. pytesseract를 사용해서 이미지 안에서 다음 정보를 추출해줘:\n   - 분석 구간 날짜 (예: 2011-02-01 ~ 2011-02-03)\n   - 지표 설정 (예: 볼린저밴드 20, 2 / RSI 14 등)\n   - 차트 주기 (예: 1분봉, 15분봉)\n\n2. 추출된 내용을 기반으로 yfinance에서 데이터를 불러와서:\n   - 지정된 구간\n   - 지정된 주기별 (1분, 15분 등)\n   - 지정된 지표 포함\n\n3. 이 전략으로 매수/매도 시점을 잡아 백테스트를 해줘.\n\n4. 각 지표의 설정값을 최적화해서, 승률/수익률/손익비가 최대가 되는 조합도 찾아줘.\n\n5. 시각화 차트를 log scale과 일반 차트로 각각 보여줘.\n\n6. 마지막 결과는 HTML 형식 보고서로 저장해줘.",
+    "skills": [
+      "C Programming",
+      "Python",
+      "C# Programming",
+      "Software Architecture",
+      "Metatrader"
+    ],
+    "location": "Korea, Republic of",
+    "rating": "0.0",
+    "projectId": "39421348",
+    "verifications": [
+      "Rating: 4.4 out of 5",
+      "FLFrank is online.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/metatrader/Causor-trading-coin-stock-binance",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹4,000.00 – 5,500.00 INR",
+    "description": "I'm looking to build an advanced AI voice chatbot. The project includes several key components:\n\n1. Voice Interface:\n   - Google Speech-to-Text & Amazon Polly\n   - Support for Hindi and various regional accents\n   - User interactions via voice commands, conversational dialogue, and query-based responses\n\n2. NLP Model:\n   - Rasa or Sarvam AI for Indian languages\n   - Custom corpus for household vocabulary\n\n3. Backend:\n   - Node.js and Firebase\n   - User data storage and real-time updates\n\n4. Mobile App:\n   - Developed in Flutter for both Android and iOS\n   - Integration with WhatsApp and YouTube APIs\n\n5. AI Avatar:\n   - Built with Python and Blender\n   - 3D animation with intermediate detail\n   - Lip-sync capabilities with regional accents\n\n6. Hosting:\n   - AWS Mumbai (GDPR-Compliant)\n   - Utilizing EC2, S3, and CloudFront\n\nIdeal Skills and Experience:\n- Expertise in voice recognition and synthesis\n- Strong NLP background, especially with Indian languages\n- Proficient in Node.js, Firebase, and Flutter\n- Experience in 3D animation and Python\n- Familiarity with AWS services and GDPR compliance\n\nPlease provide a portfolio showcasing relevant work.",
+    "skills": [
+      "Python",
+      "Android",
+      "Node.js",
+      "XMPP",
+      "Google Firebase"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39423398",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/python/Voice-Chatbot-Development",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹750.00 – 1,250.00 INR per hour",
+    "description": "I'm seeking experienced trainers (Offline) for various IT positions. \n\nPositions include:\n- Software Development\n  - Full stack Java\n  - AI & ML\n  - Data Analytics\n- Cybersecurity\n- Data Science\n- Full Stack Development (MERN Stack)\n- Testing\n\nIdeal Skills & Experience:\n- In-depth knowledge of the specified technologies\n- Proven training or teaching experience\n- Ability to convey complex concepts simply\n- Certification in respective fields is a plus\n\nYour expertise can help shape the next generation of IT professionals. Looking forward to your bids!",
+    "skills": [
+      "Java",
+      "Python",
+      "MySQL",
+      "Frontend Development",
+      "React.js Framework"
+    ],
+    "location": "India",
+    "rating": "0.0",
+    "projectId": "39423255",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/java/Trainers-Needed-39423255",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "$99.00 – 100.00 USD",
+    "description": "Project Details \n$99.00 – 100.00 USD\n \nn8n Automation Challenge for CRE — Build 4 Workflows & Win Long-Term Role + Equity\nOpportunity: Competitive audition to become the lead automation developer for a growing AI infrastructure agency targeting US Commercial Real Estate (CRE) brokerages.\n\nPrize for the Best Submission:\nOngoing paid work $2000 per build (customizing workflows for real clients)\nEquity stake (milestone-based starting from 6 months) in the business\nFounding technical builder title in a high-potential niche with solutions that are not being done in this market, lets become an apex ai solution and run an entire sector and geographic location.\n\nThe Challenge\nDevelop 6 n8n workflows (dummy-data versions) that revolutionize CRE operations:\nLead Generation Engine – Scrape/parse CRE leads from target sources.\nInstant Deal Analyzer – Auto-calculate ROI, CAP rates, etc..\nTour Scheduler Pro – Sync tours across broker/owner calendars.\nClient Nurture Bot – Automated check-ins + updates via email/SMS.\n\nWhat We Provide\nDetailed workflow specs & dummy datasets\nExample SOPs, forms, and expected outputs\nFeedback/support during the challenge\n\nWhat We Offer\nContract to work for startup business exclusively getting paid $2000 per job for 14 days work maximum then every build will probably max be 5-7 days but the money is the same. Equity share in potential 6-7 figure business. 7-14 days work could secure you financial freedom by dominating a market with the only solution of its kind for a market that needs this solution, Your move.\n\nTech Stack\nn8n (core)\n\nGoogle Workspace (Sheets, Calendar, Gmail)\n\nTelegram Bot API (for notifications)\n\nSMTP/Email APIs (SendGrid, Mailchimp, etc.)\n\nOptional: Light web scraping (ethical, rate-limited)\n\n9 API connections 3 to LLM's, 6 to various AI solutions to create an infrastructure that will dominate this market\n\nSubmission Requirements\nExported n8n JSON files (all 4 workflows)\n\n5-min Loom video explaining your architecture\n\nError-handling approach (how you’d debug real-world use)\n\nTimeline & proposed improvements\n\n18 days from acceptance\n\nIdeal Candidate\nProven n8n experience (portfolio/GitHub links required)\n\nStrong with API integrations, data pipelines, and modular workflows\n\nFamiliar with CRE tools (e.g., Costar, REIS) is a plus\n\nInterested in long-term collaboration (not just one-off gigs)\n\nTimeline\n18 days\n\nWinner announced: 18 days from start date\n\nHow to Apply\nReply with:\n\nBrief intro + n8n project examples\n\nWhy you’re a fit for CRE automation\n\nEstimated time to complete the challenge\n\nOnly one winner selected. Ready to build the future of CRE tech?",
     "skills": [
       "Java",
       "Python",
       "Software Architecture",
-      "CUDA",
-      "Machine Learning (ML)"
+      "Data Science",
+      "n8n"
+    ],
+    "location": "United Kingdom",
+    "rating": "0.0",
+    "projectId": "39423380",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/software-architecture/Build-Workflows-for-CRE-Automation",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "₹750.00 – 1,250.00 INR per hour",
+    "description": "I choose the first that say Yes I do it for 500usd\n\n500usd I pay\n\nSend pm \n\n\nProject Brief – “BÄSTIS” App\n\nApp type: Mobile (iOS and Android)\nGoal: To build a personal AI assistant app that helps everyday users understand official documents, confusing letters, or difficult situations. The app should be ultra-simple, safe, and trustworthy.\n\n⸻\n\n1. Core Concept\n\nUsers can:\n\t•\tScan a document (e.g. a letter or decision) → the app explains what it means\n\t•\tAsk a question by voice → the app answers clearly\n\t•\tAsk a question by typing → the app answers immediately\n\nThe app gives personalized, AI-generated answers. It does not store images or audio, but it should remember basic user preferences over time to provide better answers.\n\n⸻\n\n2. Interface (very simple)\n\nMain screen has just three buttons/icons:\n\t•\tCamera icon (scan a document)\n\t•\tMicrophone icon (ask by voice)\n\t•\tPen icon (ask by typing)\n\nAdditional screens:\n\t•\tInput screen (camera/mic/text)\n\t•\tResponse screen (shows AI-generated answer)\n\t•\tLogin screen (mobile number + SMS code)\n\t•\tSettings screen: view/edit profile, delete all data\n\nMax total: 5 screens\n\n⸻\n\n3. User Memory / Profile (cloud-based)\n\nTo personalize answers, the app stores a minimal, secure profile for each user:\n\n{\n  \"nickname\": \"Johan\",\n  \"tone\": \"direct and calm\",\n  \"language\": \"sv\",\n  \"topics\": [\"child law\", \"insurance\", \"school\"],\n  \"sensitive_topics\": [\"divorce\"],\n  \"last_questions\": [\n    \"What does this letter mean?\",\n    \"Can I refuse this meeting?\"\n  ]\n}\n\nStored securely in Firebase or Supabase.\nNo documents, images, or audio are saved.\nThis is only used to improve AI response quality and tone.\n\n⸻\n\n4. Privacy & Security\n\t•\tNo passwords or accounts – only mobile number + SMS verification\n\t•\tNo behavioral tracking\n\t•\tAll profile data is encrypted in the cloud\n\t•\tApp must be fully GDPR-compliant\n\t•\tUser can always delete their profile completely\n\n⸻\n\n5. Tech Stack Suggestions\n\nYou may choose the stack, but here’s a suggested stack:\n\t•\tFrontend: Flutter (or React Native)\n\t•\tOCR: Google ML Kit (on-device text recognition)\n\t•\tAI: OpenAI GPT-4o (for text understanding & generation)\n\t•\tBackend/DB: Firebase Firestore or Supabase\n\t•\tAuthentication: SMS login (Firebase Auth or similar)\n\n⸻\n\n6. Design & Tone\n\t•\tThe app should feel: friendly, smart, clear, and non-corporate\n\t•\tNo ads\n\t•\tNo dashboards\n\t•\tJust fast, human-style answers to real-life problems\n\t•\tThe assistant should “speak like the user” – calm, kind, or direct depending on preferences\n\n⸻\n\n7. Deliverables\n\t•\tFully working app (iOS + Android)\n\t•\tCodebase and deployment support\n\t•\tAll source files (code, design, AI logic)\n\t•\tAdmin access or instructions for future updates\n\t•\tHelp publishing to App Store & Google Play (if needed)",
+    "skills": [
+      "PHP",
+      "Website Design",
+      "Graphic Design",
+      "MySQL",
+      "HTML"
     ],
     "location": "India",
     "rating": "0.0",
-    "projectId": "39414463",
+    "projectId": "39423267",
     "verifications": [
-      "Rating: 5.0 out of 5",
-      "FLFrank is offline.",
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
       "Verified by Freelancer badge"
     ],
-    "link": "https://www.freelancer.com/projects/python/Adversarial-Misinformation-Generation",
+    "link": "https://www.freelancer.com/projects/graphic-design/Best-friend-app-fix-price",
+    "client": {}
+  },
+  {
+    "title": "Project Details",
+    "budget": "£20.00 – 250.00 GBP",
+    "description": "I want to build a Jarvis-like prototype that can assist me with real-world tasks, similar to Alexa but personalized. This setup should allow me to add my own features as I see fit.\n\nRequirements:\n- Voice commands for interaction\n- Notifications and alerts\n- Reminders\n- Real-time information retrieval, like:\n  - Stock values (e.g., \"What is the stock value of Tata now?\")\n  - Weather updates (e.g., \"What is the temperature now?\")\n  - Sports scores (e.g., \"What is the cricket score now?\" or \"Send notifications for any wickets or milestones in LPL\")\n\nIdeal skills and experience:\n- Experience in developing AI personal assistants\n- Proficiency in voice recognition and command processing\n- Knowledge in real-time data integration (stocks, weather, sports)\n- Familiarity with customizable, user-driven setups",
+    "skills": [
+      "Python",
+      "Data Processing",
+      "Web Scraping",
+      "Data Mining",
+      "Personal Development"
+    ],
+    "location": "United Kingdom",
+    "rating": "0.0",
+    "projectId": "39423250",
+    "verifications": [
+      "Rating: 0.0 out of 5",
+      "FLFrank is online.",
+      "Verified by Freelancer badge"
+    ],
+    "link": "https://www.freelancer.com/projects/python/Personal-Assistant-Prototype-Development",
     "client": {}
   }
 ]

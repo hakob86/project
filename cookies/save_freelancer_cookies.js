@@ -15,7 +15,7 @@ process.on('unhandledRejection', (reason, promise) => {
   try {
     // ПОДКЛЮЧАЕМСЯ к уже ЗАПУЩЕННОМУ Chrome
     browser = await puppeteer.connect({
-      browserURL: 'http://localhost:9222',
+      browserURL: 'http://localhost:9223',
       defaultViewport: null
     });
 

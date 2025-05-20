@@ -29,6 +29,11 @@
         <p><strong>Клиент:</strong> {{ job.location }}{% if job.client_since %}, с {{ job.client_since }}{% endif %}</p>
         <p><strong>Навыки:</strong> {{ job.skills|join(', ') }}</p>
         <p>{{ job.description[:100] }}{% if job.description|length > 220 %}...{% endif %}</p>
+        <p>
+        {{ (job.description or job.desc or job.text or job.details or '')[:100] }}
+        {% if (job.description or job.desc or job.text or job.details or '')|length > 220 %}...{% endif %}
+      </p>
+
         
         <a href="{{ job.link }}" target="_blank" class="job-link">Перейти к задаче</a>
       </div>

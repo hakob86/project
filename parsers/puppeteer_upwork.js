@@ -19,35 +19,44 @@ async function autoScroll(page, maxScrolls = 10) {
   await page.evaluate(() => window.scrollTo(0, 0));
 }
 
-async function parseAllPages(page, topic, maxPages = 3) {
+async function parseAllPages(page, topic, minBudget = 0, maxPages = 3) {
   let allJobs = [];
   for (let pageIndex = 1; pageIndex <= maxPages; pageIndex++) {
     if (pageIndex > 1) {
-      // Переход на следующую страницу
       const nextBtnSelector = `button[data-test="pagination-item"][data-ev-page_index="${pageIndex}"]`;
       await page.waitForSelector(nextBtnSelector, { timeout: 15000 });
       await page.click(nextBtnSelector);
       await wait(4000, `[DEBUG] Перешли на страницу ${pageIndex}`);
     }
 
-    // Делаем скроллинг для загрузки всех карточек
     await autoScroll(page, 8);
 
-    // Собираем карточки на текущей странице
     await page.waitForSelector('article[data-test="JobTile"]', { timeout: 30000 });
-    const jobs = await page.$$eval('article[data-test="JobTile"]', cards => cards.map(card => {
+    const jobs = await page.$$eval('article[data-test="JobTile"]', (cards, minBudget) => cards.map(card => {
       const title = card.querySelector('h2.job-tile-title, h2, h1, h3')?.innerText || 'Без названия';
       const linkEl = card.querySelector('a[data-test*="job-tile-title-link"]');
       const link = linkEl ? new URL(linkEl.getAttribute('href'), 'https://www.upwork.com').toString() : '';
-      const desc = card.querySelector('div[data-test="UpCLineClamp JobDescription"] p, p')?.innerText || '';
+      const description = card.querySelector('div[data-test="UpCLineClamp JobDescription"] p, p')?.innerText || '';
       const published = card.querySelector('[data-test="job-pubilshed-date"] span:last-child')?.innerText || '';
-      const price = card.querySelector('li[data-test="is-fixed-price"] strong:last-child')?.innerText || '';
+      const priceText = card.querySelector('li[data-test="is-fixed-price"] strong:last-child')?.innerText || '';
       const type = card.querySelector('li[data-test="job-type-label"] strong')?.innerText || '';
       const exp = card.querySelector('li[data-test="experience-level"] strong')?.innerText || '';
       const location = card.querySelector('li[data-test="location"] span:not(.sr-only)')?.innerText || '';
       const paymentVerified = !!card.querySelector('[data-test="payment-verified"]');
-      return { title, link, desc, published, price, type, exp, location, paymentVerified };
-    }));
+
+      // Извлекаем число из цены
+      let priceNum = 0;
+      if (priceText) {
+        const m = priceText.replace(/[^\d]/g, '');
+        priceNum = m ? parseInt(m, 10) : 0;
+      }
+
+      // Возвращаем карточку только если цена >= minBudget
+      if (priceNum < minBudget) return null;
+
+      return { title, link, description, published, price: priceText, type, exp, location, paymentVerified };
+    }).filter(x => x), minBudget);
+
     allJobs = allJobs.concat(jobs);
     console.log(`[INFO] Страница ${pageIndex}: собрано ${jobs.length} заказов`);
   }
@@ -55,16 +64,19 @@ async function parseAllPages(page, topic, maxPages = 3) {
 }
 
 (async () => {
+  let browser;
   try {
-    const [, , topicRaw = 'ai'] = process.argv;
+    // Получаем все параметры из командной строки
+    const [, , topicRaw = 'ai', minBudgetRaw = '0'] = process.argv;
     const topic = topicRaw.trim();
+    const minBudget = parseInt(minBudgetRaw, 10) || 0;
     const outputPath = path.resolve(__dirname, '../results/upwork.json');
 
     // 1. Подключаемся к уже открытому Chrome
-    const response = await fetch('http://localhost:9222/json/version');
+    const response = await fetch('http://localhost:9223/json/version');
     const data = await response.json();
     const wsEndpoint = data.webSocketDebuggerUrl;
-    const browser = await puppeteer.connect({
+    browser = await puppeteer.connect({
       browserWSEndpoint: wsEndpoint,
       defaultViewport: null,
     });
@@ -95,8 +107,8 @@ async function parseAllPages(page, topic, maxPages = 3) {
     await page.keyboard.press('Enter');
     await wait(3500, '[DEBUG] Ждём появления карточек...');
 
-    // 5. Парсим все страницы пагинации
-    const jobs = await parseAllPages(page, topic, 3); // 3 страницы
+    // 5. Парсим все страницы пагинации (и фильтруем по бюджету!)
+    const jobs = await parseAllPages(page, topic, minBudget, 3);
 
     await fs.writeFile(outputPath, JSON.stringify(jobs, null, 2), 'utf-8');
     console.log(`[DONE] Сохранено ${jobs.length} заказов в ${outputPath}`);
@@ -124,11 +136,12 @@ async function parseAllPages(page, topic, maxPages = 3) {
     await browser.disconnect?.();
 
   } catch (err) {
-    logger.error(`❌ Ошибка: ${err.message}`);
+    console.error('[ERROR]', err);
+    process.exit(1);
   } finally {
     if (browser) {
-      await wait(10000, '📴 Закрытие браузера');
-      await browser.close();
+      try { await browser.disconnect?.(); } catch {}
+      try { await browser.close?.(); } catch {}
     }
   }
 })();

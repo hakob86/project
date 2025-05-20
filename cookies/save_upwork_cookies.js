@@ -9,7 +9,7 @@ const winston = require('winston');
 puppeteer.use(StealthPlugin());
 
 const cookiesPath = path.resolve(__dirname, '../cookies/upwork_cookies.json');
-const port = process.env.DEBUG_PORT || 9222;
+const port = process.env.DEBUG_PORT || 9223;
 
 const logger = winston.createLogger({
   level: 'info',
@@ -35,9 +35,9 @@ async function getWebSocketDebuggerUrl() {
     const browser = await puppeteer.connect({ browserWSEndpoint: wsUrl });
 
     // === Открываем localhost:5000 ===
-    logger.info('🌐 Открываю http://localhost:5000 ...');
+    logger.info('🌐 Открываю http://localhost:9223 ...');
     const localPage = await browser.newPage();
-    await localPage.goto('http://localhost:5000', { waitUntil: 'networkidle2' });
+    await localPage.goto('http://localhost:9223', { waitUntil: 'networkidle2' });
 
     // === Открываем Upwork в новой вкладке ===
     logger.info('🌐 Открываю https://www.upwork.com ...');

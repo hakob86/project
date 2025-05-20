@@ -8,6 +8,7 @@ from users import db
 from users.models import AutoParseConfig, Job
 import logging
 from flask import flash
+import sys
 
 
 app = Flask(__name__)
@@ -220,13 +221,55 @@ def search():
     region = ""
 
     parsers = [
-        {"script": "puppeteer_guru.js", "result_file": "guru.json"},
-        {"script": "puppeteer_freelancer.js", "result_file": "freelancer.json"},
-        {"script": "puppeteer_upwork.js", "result_file": "upwork.json"},
+        {"script": "puppeteer_guru.js", "result_file": "guru.json", "type": "node"},
+        {"script": "puppeteer_freelancer.js", "result_file": "freelancer.json", "type": "node"},
     ]
+    upwork = {"script": "run_all.py", "result_file": "upwork.json", "type": "python"}
 
-    runner = ParserRunner(parsers)
-    jobs, errors = runner.start(topic, min_budget, max_budget, region)
+    jobs, errors = [], []
+
+    # 1. Параллельно запускаем Guru и Freelancer
+    procs = []
+    for p in parsers:
+        try:
+            proc = subprocess.Popen([
+                "node",
+                os.path.join("parsers", p["script"]),
+                topic,
+                min_budget,
+                max_budget,
+                region
+            ])
+            procs.append((proc, p))
+        except Exception as e:
+            errors.append(f"Ошибка запуска {p['script']}: {e}")
+
+    # 2. Дожидаемся завершения обоих
+    for proc, p in procs:
+        retcode = proc.wait()
+        if retcode == 0:
+            try:
+                with open(os.path.join("results", p["result_file"]), "r", encoding="utf-8") as f:
+                    jobs += json.load(f)
+            except Exception as e:
+                errors.append(f"Ошибка чтения {p['result_file']}: {e}")
+        else:
+            errors.append(f"Парсер {p['script']} завершился с ошибкой {retcode}")
+
+    # 3. Запускаем Upwork отдельно после них
+    try:
+        subprocess.run([
+            sys.executable,
+            os.path.join("parsers", upwork["script"]),
+            topic,
+            min_budget,
+            max_budget,
+            region
+        ], check=True)
+        with open(os.path.join("results", upwork["result_file"]), "r", encoding="utf-8") as f:
+            jobs += json.load(f)
+    except Exception as e:
+        errors.append(f"Ошибка при запуске {upwork['script']}: {e}")
 
     if errors:
         flash(" / ".join(errors), "error")
